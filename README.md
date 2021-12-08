@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+Iron ___ 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Description
 
-## Available Scripts
+A platform for selling/buying items.
 
-In the project directory, you can run:
+User Stories 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 500 - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend login - As a user I want to be able to log in on the webpage so that I can get back to my account logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account events list - As a user I want to be able to upload items so that i could sell my items - As a user I want to be able to log in on the webpage to buy items that I like As a user I want to be able to log in on the webpage to edit my profile - As a user I want to be able to log in on the webpage to delete my account 
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Backlog
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Stripe payment checkout
+Itempage redirect after login 
+Related items 
+Rating
+Comment
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+ROUTES: GET /
+renders Homepage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+POST / body:
+search field to filter items
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+GET /signup
+redirects to / if user logged in
+renders the signup form
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+POST /signup body: username email password
+if failed - renders auto/signup (with flash msg)
+else redirects to / if user logged in
 
-### `yarn eject`
+GET /login
+redirects to / if user logged in
+renders the login form
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+POST /login body: username password
+if failed - renders auto/login (with flash msg)
+else redirects to / if user logged in
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+GET /logout
+end session.destroy()
+redirect to /
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+GET /items/create
+renders createpage if logged in
+else homepage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+POST /items/create body: Item Title Category Condition Description Add Images Add item
+redirects homepage
 
-## Learn More
+GET /items/:itemId
+redirects to /login if not logged in
+else renders /:itemId page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GET /items/:itemId/update
+redirects to /login if not logged in
+if validates itemId with userId renders update forms
+else renders items/:itemId
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+POST /items/:itemId/update
+(with values from :itemId) body: Item Title Category Condition Description Add Images Add item
+redirects /items/:itemsId
 
-### Code Splitting
+POST /items/:itemId/delete
+renders profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+GET /items/:itemId/congrats
+render congrats with item & user info
+messages link**
 
-### Analyzing the Bundle Size
+GET /profile
+redirects to /login if not logged in
+renders /profile page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+GET /settings
+redirects to /login if not logged in
+renders settings page + update info form
+deactivate account? + flash msg + cruD (end session.destroy() / redirect to login)
 
-### Making a Progressive Web App
+POST /settings body: username* password*
+validation new username (crUd) new email (crUd) new password (crUd)
+redirects to /profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+POST /cart/create
+render cart page
+else error
 
-### Advanced Configuration
+PUT /cart/itemId/update
+able to update the cart
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+DELETE /cart/:itemId/delete
+render cart page
 
-### Deployment
+UserModel
+username: String, email: String, password: String, img: {type: String}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ProductModel
+title: String, condition: String, description: String, img: String, price: Number, buyer: { type: Schema.Types.ObjectId, ref: 'User' }, seller:{ type: Schema.Types.ObjectId, ref: 'User' }, categories: { type: Array },
 
-### `yarn build` fails to minify
+CartModel
+productId: {type: String}, quantity: {type: Number,default: 1}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+OrderModel
+productId: {type: String}, quantity: {type: Number,default: 1}
+
+Links Figma Project Module 3
+
+Git Iron ___
+
+Deploy Link
+
+Slides
+
+Slides Link
