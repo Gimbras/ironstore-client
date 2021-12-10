@@ -1,62 +1,54 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import LoadingComponent from "./components/Loading";
-import Navbar from "./components/Navbar/Navbar";
-import { getLoggedIn, logout } from "./services/auth";
-import routes from "./config/routes";
-import * as USER_HELPERS from "./utils/userToken";
+import {useState, useEffect, useContext} from 'react'
+import { Routes, Route } from  "react-router-dom";
+import AddForm from "./components/AddForm"
+import Products from "./components/Products/Products"
+import { API_URL } from './config';
+
+// import { UserContext } from './components/context/app.context';
+import axios from "axios"
+
+
 
 export default function App() {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [allProducts, setallProducts] = useState([])
 
-  useEffect(() => {
-    const accessToken = USER_HELPERS.getUserToken();
-    if (!accessToken) {
-      return setIsLoading(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    //first upload the image to cloudinary
+    console.log(event)
+     
+     // Create the form data with the key 'imageUrl' because our server expects the formdata with they key 'imageUrl'
+     let imageForm = new FormData()
+     imageForm.append('imageUrl', event.target.myImage.files[0])
+     console.log("event", event.target.myImage.files[0])
+     console.log(imageForm)
+     let imgResponse = await axios.post(`${API_URL}/upload`, imageForm)
+     console.log(imgResponse.data)
+
+    console.log(event.target)
+
+    let newProduct = {
+      title: event.target.title.value,
+      desc: event.target.desc.value,
+      price: event.target.price.value,
+      categories: event.target.categories.value,
+      img: imgResponse.data.image,
+      completed: false,
     }
-    getLoggedIn(accessToken).then((res) => {
-      if (!res.status) {
-        return setIsLoading(false);
-      }
-      setUser(res.data.user);
-      setIsLoading(false);
-    });
-  }, []);
+    // Pass an object as a 2nd param in POST requests
+    let response = await axios.post(`${API_URL}/create`, newProduct, {withCredentials: true})
+    setallProducts([response.data, ...allProducts])
+}
 
-  function handleLogout() {
-    const accessToken = USER_HELPERS.getUserToken();
-    if (!accessToken) {
-      setUser(null);
-      return setIsLoading(false);
-    }
-    setIsLoading(true);
-    logout(accessToken).then((res) => {
-      if (!res.status) {
-        // deal with error here
-        console.error("Logout was unsuccessful: ", res);
-      }
-      USER_HELPERS.removeUserToken();
-      setIsLoading(false);
-      return setUser(null);
-    });
-  }
-
-  function authenticate(user) {
-    setUser(user);
-  }
-
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
   return (
     <div className="App">
-      <Navbar handleLogout={handleLogout} user={user} />
-      <Routes>
-        {routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
-      </Routes>
+   <Routes>
+     <Route path="/" element={<Products products={allProducts} /> } />
+     <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
+
+   </Routes>
+
     </div>
   );
 }
