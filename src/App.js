@@ -23,7 +23,7 @@ function App(){
   const [err, setErr] = useState(null)
   const [allProducts, setallProducts] = useState([])
 
-
+// handle display profile
   async function handleLogIn  (event){
     event.preventDefault()
     try{
