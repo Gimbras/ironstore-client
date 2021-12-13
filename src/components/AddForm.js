@@ -68,7 +68,7 @@ function AddForm(props) {
                
 
                </Stack>
-               <input  type="file"  name="myImage"  accept="image/png, image/jpg"  />
+               <input type="file"  name="myImage"  accept="image/png, image/jpg"  />
                </Box>
     )
 

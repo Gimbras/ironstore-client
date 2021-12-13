@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {useParams, Link, Navigate} from 'react-router-dom'
 import {Spinner} from 'react-bootstrap'
 import axios from 'axios'
+import {API_URL} from "../config"
 
 
 function ProductDetail() {
@@ -14,7 +15,8 @@ function ProductDetail() {
     useEffect(() => {
         const getData = async () => {
            // Fetching info for a single todo  
-           let response = await axios.get('/products/${productId}', {withCredentials: true})
+           let response = await axios.get(`${API_URL}/${productId}`, {withCredentials: true})
+           console.log(response.data)
            setProductDetail(response.data)
         }
         getData()
@@ -32,16 +34,19 @@ function ProductDetail() {
    
 
     return (
+        
         <div>
+            
             <h2>Product Details </h2>
             <h4>Name: {productDetail.title}</h4>
             <h4>Price: {productDetail.price}</h4>
             <h4>Categories: {productDetail.categories}</h4>
             <h4>Description: {productDetail.desc}</h4>
-            <img src={productDetail.image} />
-
+            <img src={productDetail.img} />
+            
            
         </div>
+        
     )
 }
 
