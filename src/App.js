@@ -14,7 +14,7 @@ import ProductList from "./components/ProductList";
 import {useState, useEffect} from 'react'
 import AddForm from "./components/AddForm"
 import Products from "./components/Products/Products"
-
+import Profile from "./components/Profile"
 
 function App(){
 
@@ -89,6 +89,7 @@ function App(){
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />
           <Route path="/signup" element={<SignUp/>}/> 
           <Route path="/" element={<ProductList/>}/>
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/" element={<Products products={allProducts} /> } />
      <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
           {/* <Route path="/" element={<ProductList todos={todos} /> } />

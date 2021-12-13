@@ -17,9 +17,9 @@ const Navbar = (props) => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink"> */}
-              {/* Protected Page */}
-            {/* </Link> */}
+            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
+              Protected Page
+            </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogOut}>
               Logout
             </button>
