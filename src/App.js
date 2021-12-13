@@ -13,7 +13,8 @@ import {API_URL} from "./config";
 import ProductList from "./components/ProductList";
 import {useState, useEffect} from 'react'
 import AddForm from "./components/AddForm"
-import Products from "./components/Products/Products"
+import ProductDetail from "./components/ProductDetails";
+
 
 
 function App(){
@@ -21,7 +22,31 @@ function App(){
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
   const [err, setErr] = useState(null)
-  const [allProducts, setallProducts] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+  const [fetchingUser, setFetchingUser] = useState(true)
+
+  useEffect(() => {
+
+    const getData = async () => {
+
+        // -----------------------------------------------
+        // we make the user requst here to know if the user is logged in or not
+        try {
+          let userResponse = await axios.get(`${API_URL}/user`,{withCredentials: true})
+          setFetchingUser(false)
+          setUser(userResponse.data)
+        }
+        catch(err){
+          // the request will fail if the user is not logged in 
+          setFetchingUser(false)
+        }
+        // -----------------------------------------------
+
+    }
+
+    getData()
+
+}, [])
 
 
   async function handleLogIn  (event){
@@ -41,8 +66,21 @@ function App(){
   } 
     catch(error){
       setErr(error.response.data)
+                         
     }
   };
+
+
+
+  useEffect(() => {
+    async function getProducts() {
+  const response = await axios.get(`${API_URL}/products`, {withCredentials: true})
+  //console.log(response.data)
+  setAllProducts(response.data)
+}
+
+getProducts()
+}, [])
 
     const handleSubmit = async (event) => {
       event.preventDefault()
@@ -56,7 +94,7 @@ function App(){
        console.log("event", event.target.myImage.files[0])
        console.log(imageForm)
        let imgResponse = await axios.post(`${API_URL}/upload`, imageForm)
-       console.log(imgResponse.data)
+       console.log("image response",imgResponse.data)
   
       console.log(event.target)
   
@@ -70,7 +108,9 @@ function App(){
       }
       // Pass an object as a 2nd param in POST requests
       let response = await axios.post(`${API_URL}/create`, newProduct, {withCredentials: true})
-      setallProducts([response.data, ...allProducts])
+      setAllProducts([response.data, ...allProducts])
+
+      navigate('/')
   }
     ;
   
@@ -81,6 +121,11 @@ function App(){
 
   }
 
+  if (fetchingUser) {
+    return <p>Loading user info. . . </p>
+  }
+
+
 	return (
 		<div>
       <Navbar handleLogOut={handleLogOut} user={user}/>
@@ -88,9 +133,9 @@ function App(){
       <Routes>
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />
           <Route path="/signup" element={<SignUp/>}/> 
-          <Route path="/" element={<ProductList/>}/>
-          <Route path="/" element={<Products products={allProducts} /> } />
-     <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
+          <Route path="/" element={<ProductList products={allProducts} /> } />
+          <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
+          <Route path="/:productId" element={<ProductDetail  /> } />
           {/* <Route path="/" element={<ProductList todos={todos} /> } />
           <Route path="/add-form" element={<AddProduct btnSubmit={handleSubmit}/> } />
           <Route path="/todo/:todoId" element={<ProductDetail btnDelete={handleDelete} />} />
