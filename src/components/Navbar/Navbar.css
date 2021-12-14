@@ -1,9 +1,9 @@
 nav {
     display: flex;
-    padding: 1em;
+    padding: 1px;
     justify-content: space-around;
     flex-wrap: wrap;
-    background: #282c34;
+    background: #e0e2e7;
     font-weight: 600;
   }
   
@@ -13,13 +13,18 @@ nav {
   }
   
   .authLink {
-    color: #61dafb;
+    color: #e7155b;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
-  }
+    padding-top: 50%;
+    align-items: center;  }
   
   .authLink + .authLink {
-    padding: 1em;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30%;
   }
   
   .authLink:hover {

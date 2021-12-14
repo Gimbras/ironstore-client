@@ -2,7 +2,7 @@ import { Routes, Route } from  "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 // import ProductList from "./components/TodoList";
 // import ProductDetail from "./components/TodoDetail";
-
+import "./App.css"
 import axios from "axios";
 // import AddProduct from "./components/AddForm";
 // import EditForm from "./components/EditForm"
@@ -14,11 +14,11 @@ import ProductList from "./components/ProductList";
 import {useState, useEffect} from 'react'
 import AddForm from "./components/AddForm"
 import ProductDetail from "./components/ProductDetails";
-
-
+import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile"
 
 function App(){
-
+  
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
   const [err, setErr] = useState(null)
@@ -125,27 +125,47 @@ getProducts()
     return <p>Loading user info. . . </p>
   }
 
+  //handle edit profile
+  const handleEdit = async (event) => {
+    event.preventDefault()
+    console.log(event.target.name.value)
+    let editedProfile = {
+      name: event.target.name.value,
+      country: event.target.country.value,
+      age: event.target.age.value,
+      //image: event.target.img.value,
+     
+    }
+    console.log(editedProfile)
+    // Pass an object as a 2nd param in POST requests
+    let response = await axios.patch(`${API_URL}/editProfile`, editedProfile, {withCredential:true})
+    // Update our state ‘todos’ with the edited todo so that the user see the upadted info without refrshing the page
+    // We have the updated todo here
+    console.log(response.data)
+    setUser(response.data)
+    //navigate("/profile")
+}
+
+
   //accepted both routes might cause drama!!!!ALERT comited mine out
-  
 
 	return (
-		<div>
+		<div >
       <Navbar handleLogOut={handleLogOut} user={user}/>
 			
       <Routes>
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />
           <Route path="/signup" element={<SignUp/>}/> 
-          {/* <Route path="/" element={<ProductList/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/" element={<Products products={allProducts} /> } /> */}
-     <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
+          {/* <Route path="/" element={<ProductList/>}/>*/}
+          <Route path="/profile" element={<Profile user={user}/>}/>
+          {/*  <Route path="/" element={<Products products={allProducts} /> } /> */}
           <Route path="/" element={<ProductList products={allProducts} /> } />
           <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
           <Route path="/:productId" element={<ProductDetail  /> } />
           {/* <Route path="/" element={<ProductList todos={todos} /> } />
           <Route path="/add-form" element={<AddProduct btnSubmit={handleSubmit}/> } />
-          <Route path="/todo/:todoId" element={<ProductDetail btnDelete={handleDelete} />} />
-          <Route path="/todo/:todoId/edit" element={<EditProduct btnEdit={handleEdit}/>} /> */}
+  <Route path="/todo/:todoId" element={<ProductDetail btnDelete={handleDelete} />} />*/}
+          <Route path="/editprofile" element={<EditProfile btnEdit={handleEdit} user={user}/>} /> 
       </Routes>
 		</div>
   );

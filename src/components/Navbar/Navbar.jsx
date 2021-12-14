@@ -4,13 +4,9 @@ import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 
-
-
 const Navbar = (props) => {
 
-
-
-
+  console.log(props.user)
   return (
     <nav>
       <h1>IronStore</h1>
