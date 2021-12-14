@@ -1,0 +1,75 @@
+*{
+    margin:0%;
+    padding:0%
+}
+
+.image1 {
+
+left: 10%;
+right: 10%;
+top: 20%;
+bottom: 40.92%;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+border-radius: 8px 8px 8px 8px;
+}
+
+
+
+.title1 {
+position: right;
+left: 2.46%;
+right: 46.95%;
+top: 50%;
+bottom: 22.07%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 144px;
+line-height: 169px;
+
+color: rgba(5, 5, 5, 0.84);
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.prices {
+position: right;
+left: 2.46%;
+right: 46.95%;
+top: 50%;
+bottom: 22.07%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 28px;
+
+}
+
+.description1{
+width: 755px;
+height: 168px;
+left: 45px;
+top: 816px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 28px;
+}
+
+.categories1{
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 28px; 
+}
+
+

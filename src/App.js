@@ -127,7 +127,7 @@ getProducts()
 
 
 	return (
-		<div>
+		<div class= "color">
       <Navbar handleLogOut={handleLogOut} user={user}/>
 			
       <Routes>

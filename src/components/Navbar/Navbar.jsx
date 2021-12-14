@@ -23,6 +23,9 @@ const Navbar = (props) => {
             <button className="nav-logoutbtn" onClick={props.handleLogOut}>
               Logout
             </button>
+            <button className="nav-logoutbtn" to="/Profile">
+              My Profile
+            </button>
           </>
         ) : (
           <>

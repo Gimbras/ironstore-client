@@ -1,0 +1,13 @@
+
+
+.card1 {
+    display: flex;
+    flex-basis:auto;
+    float: left;
+    width: 20%;
+    justify-content: space-evenly;
+
+}
+.pleasework{
+    margin: 10%;
+}

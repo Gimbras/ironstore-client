@@ -3,6 +3,8 @@ import {useParams, Link, Navigate} from 'react-router-dom'
 import {Spinner} from 'react-bootstrap'
 import axios from 'axios'
 import {API_URL} from "../config"
+import "./ProductDetails.css"
+
 
 
 function ProductDetail() {
@@ -34,20 +36,20 @@ function ProductDetail() {
    
 
     return (
-        
-        <div>
-            
-            <h2>Product Details </h2>
-            <h4>Name: {productDetail.title}</h4>
-            <h4>Price: {productDetail.price}</h4>
-            <h4>Categories: {productDetail.categories}</h4>
-            <h4>Description: {productDetail.desc}</h4>
-            <img src={productDetail.img} />
-            
-           
-        </div>
+        <><div><img class="image1" style={{ width: "1200px", height: "560px" }} src={productDetail.img} /></div><div>
+
+            <h1 class="title1">{productDetail.title}</h1>
+            <h4 class="prices">€{productDetail.price}</h4>
+            <h4 class="categories1">{productDetail.categories}</h4>
+            <h4 class="description1">{productDetail.desc}</h4>
+
+
+
+        </div></>
         
     )
 }
 
 export default ProductDetail
+
+

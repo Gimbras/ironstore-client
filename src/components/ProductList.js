@@ -1,38 +1,55 @@
-import React, {useState, useEffect} from 'react'
-import {Spinner} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-import {API_URL} from "../config";
-import axios from 'axios'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import Grid from '@mui/material/Grid';
+import './ProductList.css'
+
 
 function ProductList(props) {
 
-    //const [allProducts, setAllProducts] = useState([]);
-   /* useEffect(() => {
-      async function getProducts() {
-    const response = await axios.get(`${API_URL}/`, {withCredentials: true})
-    setAllProducts(response.data)
-  }
-
-getProducts()
-}, [])
-*/
-
     const {products} = props
 
-    // if(!products.length) {
-    //     return <Spinner animation="grow" variant="dark" />
-    // }
-
+   
     return (
         <div>
             
-            <p>Product List Component</p>
+          
             {
                 products.map((product) => {
                   
                     return (
-                        <div>
-                            <Link to={`/${product._id}`}>{product.title}</Link>
+                        <div class="card1">
+                        <Grid class="pleasework" >
+                       
+                        <card class="u choose">  </card>
+                           <Card sx={{ maxWidth: 200 }}>
+                            <Link to={`/${product._id}`}><CardMedia
+                                component="img"
+                                alt="green iguana"
+                                height="140"
+                                image={product.img}
+                             />
+                             </Link>
+                             <CardContent>
+                               <Typography gutterBottom variant="h5" component="div">
+                                €{product.price}
+                               </Typography>
+                               <Typography variant="body2" color="text.secondary">
+                                {product.title}
+                               </Typography>
+                             </CardContent>
+                               <CardActions>
+                               <Button size="small"><AddCircleRoundedIcon /></Button>
+                             </CardActions>
+                            </Card>
+                            </Grid>  
+                          
                         </div>    
                     )
                 })
@@ -42,3 +59,4 @@ getProducts()
 }
 
 export default ProductList
+
