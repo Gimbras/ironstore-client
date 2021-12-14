@@ -150,7 +150,7 @@ getProducts()
   //accepted both routes might cause drama!!!!ALERT comited mine out
 
 	return (
-		<div >
+		<div class= "color">
       <Navbar handleLogOut={handleLogOut} user={user}/>
 			
       <Routes>

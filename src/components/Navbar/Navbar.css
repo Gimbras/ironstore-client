@@ -1,9 +1,9 @@
 nav {
     display: flex;
-    padding: 1px;
-    justify-content: space-around;
+    padding: 10px;
+    justify-content: space-between;
     flex-wrap: wrap;
-    background: #e0e2e7;
+    background: #ffffff;
     font-weight: 600;
   }
   
@@ -13,7 +13,7 @@ nav {
   }
   
   .authLink {
-    color: #e7155b;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     padding-top: 50%;
