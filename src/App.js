@@ -16,7 +16,12 @@ import AddForm from "./components/AddForm"
 import ProductDetail from "./components/ProductDetails";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
-import Stripe from "./components/Stripe";
+import StripeApp from "./components/StripeApp";
+import ChatBot from "./components/ChatBot";
+
+
+
+
 function App(){
   
   const [user, setUser] = useState(null)
@@ -24,6 +29,7 @@ function App(){
   const [err, setErr] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [fetchingUser, setFetchingUser] = useState(true)
+  
 
   useEffect(() => {
 
@@ -118,6 +124,8 @@ getProducts()
       navigate('/')
   }
     ;
+
+    
   
   async function handleLogOut(){
     await axios.post(`${API_URL}/logout`,{},{withCredentials: true});
@@ -164,14 +172,20 @@ getProducts()
 
   //accepted both routes might cause drama!!!!ALERT comited mine out
 
+if (!allProducts.length) {
+    return <p>Loading user info. . . </p>
+  }
+
 	return (
 		<div class= "color">
       <Navbar handleLogOut={handleLogOut} user={user}/>
-			
+     
+      <ChatBot />
+			{/* <StripeApp/> */}
       <Routes>
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />
           <Route path="/signup" element={<SignUp/>}/> 
-          {/* <Route path="/checkout" element={<Stripe products={allProducts} />}  /> */}
+          <Route path="/checkout" element={<StripeApp />}  />
           <Route path="/profile" element={<Profile user={user}/>}/>
           {/*  <Route path="/" element={<Products products={allProducts} /> } /> */}
           <Route path="/" element={<ProductList products={allProducts} /> } />

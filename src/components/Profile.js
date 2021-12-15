@@ -19,20 +19,20 @@ function Profile(props) {
 
   
   return (
+    <div>
     <div class="profile">
-      <h1>{user.name}</h1>
+      <h1 >{user.name}</h1>
       <h2> {user.email} </h2>
       <h2> {user.country} </h2>
       <h2> {user.age}</h2>
-      <img class="picture" src={user.image} />
-      {/* <h2> {user.location} </h2> */}
-      {/* <h2> {user.skills}</h2> */}
-      {/* link to events */}
+      
       <button>
         <Link to={`/editprofile`}> EDIT YOUR PROFILE </Link>
       </button>
+      </div>
       
-    </div>
+      <img class="picture" src={user.image} />
+      </div>
   );
 }
 export default Profile;

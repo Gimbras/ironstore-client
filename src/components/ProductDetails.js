@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {useParams, Link, Navigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {Spinner} from 'react-bootstrap'
 import axios from 'axios'
 import {API_URL} from "../config"
@@ -40,7 +40,9 @@ function ProductDetail() {
 
             <h1 class="title1">{productDetail.title}</h1>
             <h4 class="prices">€{productDetail.price}</h4>
+            <h2 class="detail"> Categories: </h2>
             <h4 class="categories1">{productDetail.categories}</h4>
+            <h2 claas="head"> Description: </h2>
             <h4 class="description1">{productDetail.desc}</h4>
 
 

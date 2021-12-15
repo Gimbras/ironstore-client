@@ -1,10 +1,22 @@
 .profile{
     margin: 2%;
+    position: absolute;
+    margin-top: 200px;
 
 }
 
 .picture{
-  border-radius: 6%;
-  max-width: 333px;
+    
+margin: 100px; 
+float: right;
+margin-right: 100px;
+border-radius: 6%;
+max-width: 333px;
 }
 
+h1{
+    font-size: 150px;
+}
+h2{
+    font-size: 50px;
+}

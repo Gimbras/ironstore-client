@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
-import * as CONSTS from "../../utils/consts";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 const Navbar = (props) => {
  
@@ -15,15 +15,20 @@ const Navbar = (props) => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
+            {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
+            </Link> */}
+            <Link to="/checkout" className="authLink">
+            <ShoppingBasketIcon/>
             </Link>
-            <button style={{color: "white"}}   className="nav-logoutbtn" onClick={props.handleLogOut}>
-              Logout
-            </button>
+         
             <button className="nav-logoutbtn" >
               <Link style={{textDecoration: "none", color: "white"}} to="/profile">My Profile</Link>
             </button>
+            <button style={{color: "white"}}   className="nav-logoutbtn" onClick={props.handleLogOut}>
+              Logout
+            </button>
+            
           </>
         ) : (
           <>
