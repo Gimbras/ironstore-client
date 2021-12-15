@@ -5,22 +5,24 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 
 const Navbar = (props) => {
+ 
 
   console.log(props.user)
   return (
     <nav>
-      <h1>IronStore</h1>
+      <Link style={{textDecoration: "none", color: "black"}}
+ to={"/"}>IronStore</Link>
       <div className="nav__authLinks">
         {props.user ? (
           <>
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
             </Link>
-            <button className="nav-logoutbtn" onClick={props.handleLogOut}>
+            <button style={{color: "white"}}   className="nav-logoutbtn" onClick={props.handleLogOut}>
               Logout
             </button>
-            <button className="nav-logoutbtn" to="/Profile">
-              My Profile
+            <button className="nav-logoutbtn" >
+              <Link style={{textDecoration: "none", color: "white"}} to="/profile">My Profile</Link>
             </button>
           </>
         ) : (

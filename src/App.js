@@ -15,8 +15,8 @@ import {useState, useEffect} from 'react'
 import AddForm from "./components/AddForm"
 import ProductDetail from "./components/ProductDetails";
 import Profile from "./components/Profile";
-import EditProfile from "./components/EditProfile"
-
+import EditProfile from "./components/EditProfile";
+import Stripe from "./components/Stripe";
 function App(){
   
   const [user, setUser] = useState(null)
@@ -47,6 +47,11 @@ function App(){
     getData()
 
 }, [])
+
+const fetchUser = async () => {
+  let userResponse = await axios.get(`${API_URL}/user`,{withCredentials: true})
+  setUser(userResponse.data)
+}
 
 // handle display profile
   async function handleLogIn  (event){
@@ -128,22 +133,32 @@ getProducts()
   //handle edit profile
   const handleEdit = async (event) => {
     event.preventDefault()
+    //cloudinary profile pic
+    let imageForm = new FormData()
+       imageForm.append('imageUrl', event.target.myImage.files[0])
+       let imgResponse = await axios.post(`${API_URL}/upload`, imageForm)
     console.log(event.target.name.value)
     let editedProfile = {
       name: event.target.name.value,
       country: event.target.country.value,
       age: event.target.age.value,
-      //image: event.target.img.value,
+      image: imgResponse.data.image,
      
     }
+    
     console.log(editedProfile)
     // Pass an object as a 2nd param in POST requests
-    let response = await axios.patch(`${API_URL}/editProfile`, editedProfile, {withCredential:true})
+    let response = await axios.patch(`${API_URL}/editprofile`, editedProfile, {withCredentials:true})
+
+    
+       
+
     // Update our state ‘todos’ with the edited todo so that the user see the upadted info without refrshing the page
     // We have the updated todo here
     console.log(response.data)
+    await fetchUser()
     setUser(response.data)
-    //navigate("/profile")
+    navigate("/profile")
 }
 
 
@@ -156,7 +171,7 @@ getProducts()
       <Routes>
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />
           <Route path="/signup" element={<SignUp/>}/> 
-          {/* <Route path="/" element={<ProductList/>}/>*/}
+          {/* <Route path="/checkout" element={<Stripe products={allProducts} />}  /> */}
           <Route path="/profile" element={<Profile user={user}/>}/>
           {/*  <Route path="/" element={<Products products={allProducts} /> } /> */}
           <Route path="/" element={<ProductList products={allProducts} /> } />
@@ -165,7 +180,7 @@ getProducts()
           {/* <Route path="/" element={<ProductList todos={todos} /> } />
           <Route path="/add-form" element={<AddProduct btnSubmit={handleSubmit}/> } />
   <Route path="/todo/:todoId" element={<ProductDetail btnDelete={handleDelete} />} />*/}
-          <Route path="/editprofile" element={<EditProfile btnEdit={handleEdit} user={user}/>} /> 
+          <Route path="/editprofile" element={<EditProfile btnEdit={handleEdit} fetchUser={fetchUser} user={user}/>} /> 
       </Routes>
 		</div>
   );

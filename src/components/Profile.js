@@ -1,19 +1,30 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import * as React from "react";
-
+import {useState} from "react";
+import "./Profile.css"
 
 
 function Profile(props) {
+  //const [user, setUser] = useState(null)
   let { user } = props;
+
+
+ 
+
+
   if (!user) {
     return <h1>Loading</h1>;
   }
+
+  
   return (
-    <div>
+    <div class="profile">
       <h1>{user.name}</h1>
       <h2> {user.email} </h2>
-      <img src="https://lh3.googleusercontent.com/ogw/ADea4I53IZ54wvTnQaHVKZEGEx7Knjw3Hko7wLfS-8oDGQ=s83-c-mo"/>
+      <h2> {user.country} </h2>
+      <h2> {user.age}</h2>
+      <img class="picture" src={user.image} />
       {/* <h2> {user.location} </h2> */}
       {/* <h2> {user.skills}</h2> */}
       {/* link to events */}

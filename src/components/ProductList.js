@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Grid from '@mui/material/Grid';
 import './ProductList.css'
+import { fontSize } from '@mui/system';
 
 
 function ProductList(props) {
@@ -17,9 +18,10 @@ function ProductList(props) {
 
    
     return (
+        <>
         <div>
             
-          
+           
             {
                 products.map((product) => {
                   
@@ -45,8 +47,8 @@ function ProductList(props) {
                                </Typography>
                              </CardContent>
                                <CardActions>
-                               <Button size="small"><AddCircleRoundedIcon /></Button>
-                             </CardActions>
+                               <Button  size="small"><AddCircleRoundedIcon /></Button>
+                                    </CardActions>
                             </Card>
                             </Grid>  
                           
@@ -55,6 +57,8 @@ function ProductList(props) {
                 })
             }
         </div>
+      <Link class="addshit" to={"/add-form"} style={{textDecoration: "none", color: "grey"}} ><AddCircleRoundedIcon style={{fontSize:"2.5rem"}}/></Link> 
+       </>
     )
 }
 
