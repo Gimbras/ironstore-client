@@ -14,6 +14,8 @@ import ProductList from "./components/ProductList";
 import {useState, useEffect} from 'react'
 import AddForm from "./components/AddForm"
 import ProductDetail from "./components/ProductDetails";
+import ChatBot from "./components/ChatBot";
+
 
 
 
@@ -24,6 +26,7 @@ function App(){
   const [err, setErr] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [fetchingUser, setFetchingUser] = useState(true)
+  
 
   useEffect(() => {
 
@@ -113,6 +116,8 @@ getProducts()
       navigate('/')
   }
     ;
+
+    
   
   async function handleLogOut(){
     await axios.post(`${API_URL}/logout`,{},{withCredentials: true});
@@ -126,9 +131,15 @@ getProducts()
   }
 
 
+if (!allProducts.length) {
+    return <p>Loading user info. . . </p>
+  }
+
 	return (
 		<div class= "color">
       <Navbar handleLogOut={handleLogOut} user={user}/>
+     
+      <ChatBot />
 			
       <Routes>
           <Route path="/signin" element={<SignIn handleLogIn={handleLogIn}/>} />

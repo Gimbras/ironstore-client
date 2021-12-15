@@ -9,30 +9,43 @@ import Typography from '@mui/material/Typography';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import Grid from '@mui/material/Grid';
 import './ProductList.css'
+import Search from "./Search"
+import {useState} from 'react'
 
 
 function ProductList(props) {
 
     const {products} = props
+    const [allProducts, setAllProducts] = useState(products)
+   
 
+    function handleSearch(event){
+        let word = event.target.value
+        let filteredProducts = products.filter((element)=> {
+          return element.title.includes(word)
+        })
+    
+        setAllProducts(filteredProducts)
+      }
+    
    
     return (
         <div>
-            
+             <Search btnSearch={handleSearch}/>
           
             {
-                products.map((product) => {
+                allProducts.map((product) => {
                   
                     return (
                         <div class="card1">
                         <Grid class="pleasework" >
                        
                         <card class="u choose">  </card>
-                           <Card sx={{ maxWidth: 200 }}>
+                           <Card sx={{ maxWidth: 250, minWidth:250 }}>
                             <Link to={`/${product._id}`}><CardMedia
                                 component="img"
-                                alt="green iguana"
-                                height="140"
+                                alt="image"
+                                height="250"
                                 image={product.img}
                              />
                              </Link>
