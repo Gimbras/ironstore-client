@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import "./StripeApp.css";
 import { API_URL } from "../config";
+import Cart from "./Cart";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -35,6 +36,7 @@ export default function StripeApp() {
 
   return (
     <div className="App">
+      <Cart/>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

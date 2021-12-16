@@ -23,17 +23,14 @@ function ProductList(props) {
     const [allProducts, setAllProducts] = useState(products)
     // const [items, setItems] = useState (0)
 
-    const {items, setItems} = useContext(UserContext)
-    const [carts, setCarts] = useState([])
+    const {items, setItems, cartItems, setCartItems} = useContext(UserContext)
+    //const [cartItems, setCartItems] = useState([])
 
-    const handleAddToCart = (productId) => {
-        let cartItems = allProducts.filter((product) => {
-            return product._id == productId
-        })
-        setCarts([cartItems, ...carts])
-       console.log(carts)
+    const handleAddToCart = (product) => {
+       
+        setCartItems([product, ...cartItems])
+       console.log(cartItems)
         setItems(items +1)
-        console.log(items +1)
     }
    
 
@@ -78,7 +75,7 @@ function ProductList(props) {
                                </Typography>
                              </CardContent>
                                <CardActions>
-                               <Button onClick={() => {handleAddToCart(product._id)}} size="small"><AddCircleRoundedIcon /></Button>
+                               <Button onClick={() => {handleAddToCart(product)}} size="small"><AddCircleRoundedIcon /></Button>
                                     </CardActions>
                             </Card>
                             </Grid>  

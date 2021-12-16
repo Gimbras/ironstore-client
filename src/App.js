@@ -18,7 +18,7 @@ import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import StripeApp from "./components/StripeApp";
 import ChatBot from "./components/ChatBot";
-import { commerce } from './lib/commerce';
+// import { commerce } from './lib/commerce';
 import { ListItemSecondaryAction } from "@mui/material";
 
 
@@ -175,15 +175,6 @@ getProducts()
     navigate("/profile")
 }
 
-const fetchCart = async () => {
-  setCart(await commerce.cart.retrieve());
-};
-
-const handleAddToCart = async (productId) => {
-  const item = await commerce.cart.add(productId);
-
-  setCart(item.cart);
-};
 
 
 
@@ -206,7 +197,7 @@ if (!allProducts.length) {
           <Route path="/checkout" element={<StripeApp />}  />
           <Route path="/profile" element={<Profile user={user}/>}/>
           {/*  <Route path="/" element={<Products products={allProducts} /> } /> */}
-          <Route path="/" element={<ProductList products={allProducts} onAddToCart={handleAddToCart} handleUpdateCartQty  /> } />
+          <Route path="/" element={<ProductList products={allProducts}  /> } />
           <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
           <Route path="/:productId" element={<ProductDetail  /> } />
           {/* <Route path="/" element={<ProductList todos={todos} /> } />
