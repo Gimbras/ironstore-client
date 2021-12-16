@@ -4,12 +4,13 @@ import styled from "styled-components";
 import { sliderItems } from "../data";
 // import { mobile } from "../responsive";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
+const Container = styled.div` 
+  width: 50%;
+  height: 50vh;
   display: flex;
   position: relative;
   overflow: hidden;
+ 
 
 `;
 
@@ -98,13 +99,9 @@ const Slider = () => {
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
-              <Image src={item.img} />
+              <Image src={item.img} sx={{maxWidth: 1700}}/>
             </ImgContainer>
-            <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
-            </InfoContainer>
+        
           </Slide>
         ))}
       </Wrapper>

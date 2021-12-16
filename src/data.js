@@ -1,20 +1,17 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://www.google.com/aclk?sa=l&ai=DChcSEwio392isej0AhUM13cKHc7bBTsYABADGgJlZg&ae=2&sig=AOD64_1W0GaJ6z_PVN2DEuIFFQcYGhpY3w&adurl&ctype=5&ved=2ahUKEwiQutGisej0AhU3hP0HHYFxAEUQvhd6BAgBEGI&dct=1",
-      title: "Sofa",
+      img: "https://cdn.webshopapp.com/shops/262806/files/362206499/3-zits-industriele-hoekbank-velvet-gino-groen-link.jpg",
       bg: "f5fafd",
     },
     {
       id: 2,
-      img: "https://www.google.com/aclk?sa=l&ai=DChcSEwjDwqbAsej0AhUD5HcKHRCECEwYABAhGgJlZg&ae=2&sig=AOD64_08LdbY2yYn-vqUO-oZMi9s5I6NBA&adurl&ctype=5&ved=2ahUKEwims5nAsej0AhU34rsIHVziBPUQuxd6BQgBEMMD&dct=1",
-      title: "Dining Table",
+      img: "https://res.cloudinary.com/castlery/image/private/b_rgb:F3F3F3,c_fit,f_auto,q_auto,w_1500/v1625418196/crusader/variants/52460081/Kelsey-Marble-Dining-Table-160cm-Natural-Ash-Lifestyle-Crop.jpg",
       bg: "fcf1ed",
     },
     {
       id: 3,
-      img: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.de-slaapfabriek.nl%2Fwp-content%2Fuploads%2F2020%2F05%2FEiken-bed-Rough-hoofdbord-en-nachtkastje-Universal.jpg&imgrefurl=https%3A%2F%2Fwww.de-slaapfabriek.nl%2Fbedden%2Feiken-bed-rough%2F&tbnid=blmEp3Cpnr8F6M&vet=12ahUKEwibqpPXsej0AhVONewKHfvLApoQMygaegUIARCvBA..i&docid=YjpkBu6T_gkXpM&w=1567&h=1200&itg=1&q=bed&ved=2ahUKEwibqpPXsej0AhVONewKHfvLApoQMygaegUIARCvBA",
-      title: "Bed",
+      img: "https://www.swisssense.nl/media/catalog/product/cache/108be3b65dd6c5db32420a06e3e945a8/b/a/balance-tender-sfeer-schuin-gespiegeld.jpg",
       bg: "fbf0f4",
     },
   ];

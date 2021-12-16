@@ -181,9 +181,9 @@ getProducts()
 
   //accepted both routes might cause drama!!!!ALERT comited mine out
 
-if (!allProducts.length) {
+/*if (!allProducts.length) {
     return <p>Loading user info. . . </p>
-  }
+  }*/
 
 	return (
 		<div class= "color">
