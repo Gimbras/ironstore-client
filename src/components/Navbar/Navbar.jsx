@@ -21,17 +21,20 @@ const Navbar = (props) => {
             {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
             </Link> */}
+            <div class="cart">
             <Link to="/checkout" className="authLink">
-            <ShoppingBasketIcon/> 
-            <p>{items}</p>
+            <ShoppingBasketIcon badge content={items}/> 
+          
             </Link>
+            
          
             <button className="nav-logoutbtn" >
-              <Link style={{textDecoration: "none", color: "white"}} to="/profile">My Profile</Link>
+              <Link style={{textDecoration: "none", color: "black"}} to="/profile">My Profile</Link>
             </button>
-            <button style={{color: "white"}}   className="nav-logoutbtn" onClick={props.handleLogOut}>
+            <button style={{color: "black"}}   className="nav-logoutbtn" onClick={props.handleLogOut}>
               Logout
             </button>
+            </div>
             
           </>
         ) : (

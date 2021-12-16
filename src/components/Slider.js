@@ -4,13 +4,12 @@ import styled from "styled-components";
 import { sliderItems } from "../data";
 // import { mobile } from "../responsive";
 
-const Container = styled.div` 
-  width: 50%;
-  height: 50vh;
+const Container = styled.div`
+  width: 100%;
+  height: 70vh;
   display: flex;
-  position: relative;
+  position: center;
   overflow: hidden;
- 
 
 `;
 
@@ -34,8 +33,9 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 70%;
   display: flex;
+  postion: center;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
@@ -45,16 +45,21 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
+
 `;
 
 const ImgContainer = styled.div`
-  height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+  height: 100%; 
   flex: 1;
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 100%;
+  display: flex;
+  position: center;
 `;
 
 const InfoContainer = styled.div`
@@ -99,9 +104,9 @@ const Slider = () => {
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
-              <Image src={item.img} sx={{maxWidth: 1700}}/>
+              <Image src={item.img} />
             </ImgContainer>
-        
+          
           </Slide>
         ))}
       </Wrapper>

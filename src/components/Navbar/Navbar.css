@@ -2,11 +2,15 @@ nav {
     display: flex;
     padding: 10px;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
     background: #ffffff;
     font-weight: 600;
   }
-  
+.ShoppingBasketIcon{
+  font-size: "small";
+
+}
+
 
   
   .nav__projectName {
@@ -15,22 +19,24 @@ nav {
   }
   
   .authLink {
-    color: #ac3030;
+    width: 40%;
+    color: #000000;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
-    padding-top: 50%;
-    align-items: center;  }
+    margin-top: 10px;
+    align-items: center;
+  justify-content: space-evenly;  }
   
-  .authLink + .authLink {
+  /* .authLink + .authLink {
     display: flex;
     align-content: space-around;
     justify-content: space-between;
     align-items: center;
     margin-top: 30%;
-  }
+  } */
   
   .authLink:hover {
-    color: #ffffff;
+    color: #747070;
   }
   
   .nav-logoutbtn {
@@ -38,18 +44,19 @@ nav {
     font-weight: inherit;
     padding: 0.5em 1em;
     margin-left: 1em;
-    background-color: #5595ff;
-    box-shadow: 0 0 5px 0 aliceblue;
+    background-color: #fafafa;
+    box-shadow: 0 0 5px 0 rgb(0, 0, 0);
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    color: #e3f2ff;
+    color: #000000;
     transition: all 0.2s ease-in-out;
     position: sticky;
     top: 0;
+    
   }
   
   .nav-logoutbtn:hover {
     transform: scale(1.05);
-    background-color: #d13e3e;
+    background-color: #bbbbbb;
   }
