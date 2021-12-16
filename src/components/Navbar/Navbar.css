@@ -7,19 +7,26 @@ nav {
     font-weight: 600;
   }
   
+
+  
   .nav__projectName {
     color: #e4f9ff;
     text-decoration: none;
   }
   
   .authLink {
-    color: #ffffff;
+    color: #ac3030;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
-  }
+    padding-top: 50%;
+    align-items: center;  }
   
   .authLink + .authLink {
-    padding: 1em;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30%;
   }
   
   .authLink:hover {
