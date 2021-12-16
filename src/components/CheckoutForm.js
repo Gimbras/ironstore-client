@@ -4,7 +4,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import StripeApp from "../components/StripeApp"
+import {STRIPE_URL} from '../config'
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -59,7 +59,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        return_url: STRIPE_URL
       },
     });
 
@@ -77,11 +77,12 @@ export default function CheckoutForm() {
     setIsLoading(false);
   };
 
+  console.log(isLoading, stripe, elements)
   return (
     <div>
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form className="store-form" id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button className="store-button" disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
