@@ -42,7 +42,7 @@ function ProductList(props) {
                         <div class="card1">
                         <Grid class="pleasework" >
                        
-                        <card class="u choose">  </card>
+                        <card class="uchoose">  </card>
                            <Card sx={{ maxWidth: 250, minWidth:250 }}>
                             <Link to={`/${product._id}`}><CardMedia
                                 component="img"

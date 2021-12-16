@@ -36,18 +36,19 @@ function ProductDetail() {
    
 
     return (
-        <><div><img class="image1" style={{ width: "1200px", height: "560px" }} src={productDetail.img} /></div><div>
-
-            <h1 class="title1">{productDetail.title}</h1>
-            <h4 class="prices">€{productDetail.price}</h4>
-            <h2 class="detail"> Categories: </h2>
-            <h4 class="categories1">{productDetail.categories}</h4>
-            <h2 claas="head"> Description: </h2>
-            <h4 class="description1">{productDetail.desc}</h4>
-
-
-
-        </div></>
+        <section id="home" class="section-showcase">
+      <div class="container">
+        <div class="text">
+          <h1>{productDetail.title}</h1>
+          <h2>{productDetail.price}€</h2>
+           
+          <h2>{productDetail.categories}</h2>
+           
+          <h2>{productDetail.desc}</h2>
+        </div>
+        <img class="cullen" src={productDetail.img} alt="Product img" />
+      </div>
+    </section>
         
     )
 }

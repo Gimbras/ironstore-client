@@ -1,7 +1,7 @@
 .profile{
     margin: 2%;
-    position: absolute;
-    margin-top: 200px;
+    position: fixed;
+    margin-top: 100px;
 
 }
 
@@ -14,9 +14,23 @@ border-radius: 6%;
 max-width: 333px;
 }
 
-h1{
+.username{
     font-size: 150px;
 }
-h2{
+.userinfo{
     font-size: 50px;
+    
+    margin: 5%;
+}
+.editarperfil{
+    background-color: #fafafa; /* Green */
+    border:black;
+    border-radius: 5%;
+    color: rgb(5, 5, 5);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0%;
 }

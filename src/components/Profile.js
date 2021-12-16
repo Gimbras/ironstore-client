@@ -21,13 +21,13 @@ function Profile(props) {
   return (
     <div>
     <div class="profile">
-      <h1 >{user.name}</h1>
-      <h2> {user.email} </h2>
+      <h1 class="username" >{user.name}</h1>
+      <h2 class="userinfo"> {user.email} </h2>
       <h2> {user.country} </h2>
       <h2> {user.age}</h2>
       
-      <button>
-        <Link to={`/editprofile`}> EDIT YOUR PROFILE </Link>
+      <button class="editarperfil">
+        <Link to={`/editprofile`}> Edit </Link>
       </button>
       </div>
       
