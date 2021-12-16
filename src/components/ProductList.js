@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import './ProductList.css'
 import Search from "./Search"
 import {useState} from 'react'
+import Slider from './Slider'
 
 
 function ProductList(props) {
@@ -32,7 +33,7 @@ function ProductList(props) {
     return (
         <div>
              <Search btnSearch={handleSearch}/>
-          
+             <Slider />
             {
                 allProducts.map((product) => {
                   
