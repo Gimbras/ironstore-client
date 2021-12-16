@@ -11,14 +11,30 @@ import Grid from '@mui/material/Grid';
 import './ProductList.css'
 import { fontSize } from '@mui/system';
 import Search from "./Search"
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import Slider from './Slider'
+import {UserContext} from '../context/app.context'
+
 
 
 function ProductList(props) {
 
     const {products} = props
     const [allProducts, setAllProducts] = useState(products)
+    // const [items, setItems] = useState (0)
+
+    const {items, setItems} = useContext(UserContext)
+    const [carts, setCarts] = useState([])
+
+    const handleAddToCart = (productId) => {
+        let cartItems = allProducts.filter((product) => {
+            return product._id == productId
+        })
+        setCarts([cartItems, ...carts])
+       console.log(carts)
+        setItems(items +1)
+        console.log(items +1)
+    }
    
 
     function handleSearch(event){
@@ -29,7 +45,8 @@ function ProductList(props) {
     
         setAllProducts(filteredProducts)
       }
-    
+
+
    
     return (
         <>
@@ -61,7 +78,7 @@ function ProductList(props) {
                                </Typography>
                              </CardContent>
                                <CardActions>
-                               <Button  size="small"><AddCircleRoundedIcon /></Button>
+                               <Button onClick={() => {handleAddToCart(product._id)}} size="small"><AddCircleRoundedIcon /></Button>
                                     </CardActions>
                             </Card>
                             </Grid>  
