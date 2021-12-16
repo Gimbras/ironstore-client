@@ -18,6 +18,9 @@ import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import StripeApp from "./components/StripeApp";
 import ChatBot from "./components/ChatBot";
+// import { commerce } from './lib/commerce';
+import { ListItemSecondaryAction } from "@mui/material";
+
 
 
 
@@ -29,6 +32,8 @@ function App(){
   const [err, setErr] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [fetchingUser, setFetchingUser] = useState(true)
+  const [cart, setCart] = useState({});
+  const [items, setItems] = useState (null)
   
 
   useEffect(() => {
@@ -91,6 +96,7 @@ const fetchUser = async () => {
 }
 
 getProducts()
+// fetchCart();
 }, [])
 
     const handleSubmit = async (event) => {
@@ -170,6 +176,9 @@ getProducts()
 }
 
 
+
+
+
   //accepted both routes might cause drama!!!!ALERT comited mine out
 
 if (!allProducts.length) {
@@ -178,7 +187,7 @@ if (!allProducts.length) {
 
 	return (
 		<div class= "color">
-      <Navbar handleLogOut={handleLogOut} user={user}/>
+      <Navbar handleLogOut={handleLogOut} user={user} items={items} />
      
       <ChatBot />
 			{/* <StripeApp/> */}
@@ -188,7 +197,7 @@ if (!allProducts.length) {
           <Route path="/checkout" element={<StripeApp />}  />
           <Route path="/profile" element={<Profile user={user}/>}/>
           {/*  <Route path="/" element={<Products products={allProducts} /> } /> */}
-          <Route path="/" element={<ProductList products={allProducts} /> } />
+          <Route path="/" element={<ProductList products={allProducts}  /> } />
           <Route path="/add-form" element={<AddForm btnSubmit={handleSubmit}/> } />
           <Route path="/:productId" element={<ProductDetail  /> } />
           {/* <Route path="/" element={<ProductList todos={todos} /> } />
